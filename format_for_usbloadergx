@@ -1,0 +1,9 @@
+for f in *.wbfs; do
+    d=${f%%.*} # Removes everything after the . to remove .wbfs
+    tmp=${d#*[} # Removes everything before the [
+    l=${tmp%]*} # Removes everything after the ]
+    k="${l}.wbfs" # Adds back .wbfs (Please if you know the better way to do this tell me so)
+    mkdir -p "$d" # Makes the folder
+    mv -- "$f" "$k" # Renames the file
+    mv -- "$k" "$d" # Moves the file into the folder make this cp if you feel nervous about my code
+done
